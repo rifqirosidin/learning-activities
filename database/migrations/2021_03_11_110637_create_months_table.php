@@ -14,10 +14,11 @@ class CreateMonthsTable extends Migration
     public function up()
     {
         Schema::create('months', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(01);
             $table->string('name');
             $table->timestamps();
         });
+
     }
 
     /**

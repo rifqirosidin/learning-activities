@@ -19,6 +19,7 @@ class CreateLearningActivitiesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->foreignId('method_id')->constrained();
+            $table->foreignId('month_id')->constrained();
             $table->softDeletes();
             $table->timestamps();
         });

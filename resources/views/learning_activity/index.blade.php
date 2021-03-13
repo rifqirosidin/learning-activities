@@ -43,158 +43,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(isset($data))
-                            @foreach($data as $item)
-                                <tr>
-                                    <td style="vertical-align : middle;text-align:center;">
-                                        {{ $item->name }}
-                                    </td>
+                            @foreach($response as $methodName => $item)
+                            <tr>
+                                <td>{{ $methodName }}</td>
+                                @for($i = 1 ; $i <= 12 ; $i++)
                                     <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "01")
-                                                <ul class="">
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "02")
+                                        @if(isset($item[$i]))
+                                            @foreach($item[$i] as $learning)
                                                 <ul>
                                                     <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
+                                                        <span class="text-blue">({{ $learning->start_date . '-' . $learning->end_date }})</span>
                                                     </li>
+                                                    @include('learning_activity.button')
                                                 </ul>
-                                            @endif
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                     </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "03")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "04")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "05")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "06")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "07")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "08")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "09")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "10")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "11")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach($item->learningActivities as $learning)
-                                            @if(Carbon\Carbon::parse($learning->start_date)->format('m') == "12")
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        ({{ $learning->start_date . '-' . $learning->end_date }})
-                                                        @include('learning_activity.button')
-                                                    </li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
+                                @endfor
+                            </tr>
                             @endforeach
-                                @endif
                             </tbody>
                             </tfoot>
                         </table>

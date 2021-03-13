@@ -38,6 +38,9 @@
                                     <td>{{ $learning->method->name }}</td>
                                     <td>{{ $learning->activity }}</td>
                                     <td>
+                                        {{ $learning->start_date }} - {{ $learning->end_date }}
+                                    </td>
+                                    <td>
                                         <button type="button" class="btn btn-xs btn-primary"
                                                 onclick="restoreItem('{{ $learning->id  }}',
                                                     '{{ $learning->activity }}')">Restore
@@ -124,11 +127,9 @@
                             url: theUrl,
                             success: function (data) {
                                 window.location.href = data;
-                                swal("Sukses!", "Menghapus item  Sukses", "success");
                             },
                             error: function (data) {
                                 window.location.href = data;
-                                swal("Failed", "Menghapus item Failed", "error");
                             }
                         })
                     } else {

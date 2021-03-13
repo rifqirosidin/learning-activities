@@ -89,7 +89,7 @@
                     },
                     error: function (data) {
                         console.log(data);
-                        $(" span").html(data.responseJSON.errors['name'][0]);
+                        $(" span.text-red").html(data.responseJSON.errors['name'][0]);
                         swal("Failed", "Buat Metode Failed", "error");
                     }
                 })
@@ -157,9 +157,6 @@
                             },
                             error: function (data) {
                                 console.log(data);
-                                if (data.responseJSON.errors['name'][0] != ""){
-                                    $(" span").html(data.responseJSON.errors['name'][0]);
-                                }
                                 swal("Failed", "Hapus Metode Failed", "error");
                             }
                         })

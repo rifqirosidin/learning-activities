@@ -29,7 +29,7 @@ class MethodController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string'
+            'name' => 'required|string|unique:methods'
         ]);
 
         if ($request->ajax()){

@@ -8,6 +8,7 @@ use App\Models\LearningActivity;
 use App\Models\Method;
 use App\Repositories\LearningActivityRepository;
 use App\Repositories\MethodRepository;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class LearningActivityController extends Controller
@@ -25,11 +26,46 @@ class LearningActivityController extends Controller
     {
 
         $data = Method::with('learningActivities')
-            ->latest()
             ->get();
+
+        $response = [];
+        foreach ($data as $key => $item){
+            foreach ($item->learningActivities as $i => $learn){
+                $month = $this->getMonth($learn->start_date);
+                if ($month == '1'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '3'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '4'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '5'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '6'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '7'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '8'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '9'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '10'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '11'){
+                    $response[$item->name][$month][$i]= $learn;
+                }elseif ($month == '12'){
+                    $response[$item->name][$month][$i]= $learn;
+                }
+            }
+        }
+
         $methods = $this->methodRepository->getAll();
 
-        return view('learning_activity.index', compact('data', 'methods'));
+        return view('learning_activity.index', compact('data', 'methods', 'response'));
+    }
+
+    private function getMonth($date)
+    {
+        return Carbon::parse($date)->format('n');
     }
 
     public function create()
@@ -40,6 +76,8 @@ class LearningActivityController extends Controller
     public function store(LearningActivityRequest $request)
     {
         $validated = $request->validated();
+        $validated['month_id'] = 11;
+
         try{
             $this->learningActivity->save($validated);
             Session::flash('success', 'Create Learning Activity Success');
@@ -82,10 +120,12 @@ class LearningActivityController extends Controller
         return route('learning-activities.index');
     }
 
-    public function permanentDelete(LearningActivity $learningActivity){
-        $learningActivity->forceDelete();
+    public function permanentDelete($id){
+
+        LearningActivity::where('id',$id)->forceDelete();
+
         Session::flash('success', 'Delete Learning Activity Success');
-        return route('learning-activities.index');
+        return route('trashed.index');
     }
 
     public function trashed()

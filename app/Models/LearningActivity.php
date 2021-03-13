@@ -11,7 +11,7 @@ class LearningActivity extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['activity', 'start_date','end_date', 'method_id'];
+    protected $fillable = ['activity', 'start_date','end_date','month_id', 'method_id'];
 
 //    protected $with = ['method'];
 
@@ -24,4 +24,5 @@ class LearningActivity extends Model
     {
         return $this->belongsTo(Method::class);
     }
+
 }
