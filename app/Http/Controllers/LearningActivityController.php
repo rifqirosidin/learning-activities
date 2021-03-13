@@ -76,7 +76,6 @@ class LearningActivityController extends Controller
     public function store(LearningActivityRequest $request)
     {
         $validated = $request->validated();
-        $validated['month_id'] = 11;
 
         try{
             $this->learningActivity->save($validated);

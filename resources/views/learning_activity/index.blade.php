@@ -43,25 +43,31 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($response as $methodName => $item)
-                            <tr>
-                                <td>{{ $methodName }}</td>
-                                @for($i = 1 ; $i <= 12 ; $i++)
-                                    <td>
-                                        @if(isset($item[$i]))
-                                            @foreach($item[$i] as $learning)
-                                                <ul>
-                                                    <li>{{ $learning->activity }}
-                                                        <span class="text-blue">({{ $learning->start_date . '-' . $learning->end_date }})</span>
-                                                    </li>
-                                                    @include('learning_activity.button')
-                                                </ul>
-                                            @endforeach
-                                        @endif
-                                    </td>
-                                @endfor
-                            </tr>
-                            @endforeach
+                            @if(!empty($response))
+                                @foreach($response as $methodName => $item)
+                                    <tr>
+                                        <td>{{ $methodName }}</td>
+                                        @for($i = 1 ; $i <= 12 ; $i++)
+                                            <td>
+                                                @if(isset($item[$i]))
+                                                    @foreach($item[$i] as $learning)
+                                                        <ul>
+                                                            <li>{{ $learning->activity }}
+                                                                <span class="text-blue">({{ $learning->start_date . '-' . $learning->end_date }})</span>
+                                                            </li>
+                                                            @include('learning_activity.button')
+                                                        </ul>
+                                                    @endforeach
+                                                @endif
+                                            </td>
+                                        @endfor
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td>Job Assigment</td>
+                                    <td colspan="12" class="text-center">Sesuai Penugasan</td>
+                                </tr>
+                            @endif
                             </tbody>
                             </tfoot>
                         </table>
